@@ -1,0 +1,28 @@
+// Gradle build file. Only really needed for making the jar.
+
+defaultTasks  'jar'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName= 'SubmissionTool'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Submission tool',
+        'Implementation-Version': version,
+        'Main-Class' : 'SubmissionTool',
+        'Class-Path': './'
+    }
+    archiveName = "github-submit.jar"
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs './'
+    }
+}
